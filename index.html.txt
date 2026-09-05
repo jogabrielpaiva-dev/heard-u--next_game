@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heard u, next - Adivinhe a música</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- MODAL DE REGRAS (Aparece ao carregar a página) -->
+    <div id="rules-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <h2>Como Jogar 🌙</h2>
+            <p class="modal-subtitle">Adivinhe a música da Ariana Grande!</p>
+
+            <div class="rules-list">
+                <div class="rule-item">
+                    <span class="rule-icon">🔊</span>
+                    <div>
+                        <strong>Ouça o trecho:</strong>
+                        <p>Pressione "▶ Tocar" para escutar um pequeno trecho da música.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">✍️</span>
+                    <div>
+                        <strong>Adivinhe:</strong>
+                        <p>Digite o nome da música e envie seu palpite.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">⏱️</span>
+                    <div>
+                        <strong>Errou ou pulou?</strong>
+                        <p>A cada tentativa incorreta, um trecho maior do áudio é liberado!</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">🏆</span>
+                    <div>
+                        <strong>Pontuação:</strong>
+                        <p>Acerte para acumular pontos e manter sua sequência viva.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="start-game-btn" class="btn-start-game">Começar a Jogar ✨</button>
+        </div>
+    </div>
+
+    <!-- Painéis Laterais Animados com a Colagem -->
+    <div class="side-banner left-side">
+        <div class="collage-track scroll-up"></div>
+    </div>
+    <div class="side-banner right-side">
+        <div class="collage-track scroll-down"></div>
+    </div>
+
+    <!-- Fundo com brilho, estrelas e pétalas -->
+    <div class="stars-container"></div>
+    <div id="petals-container" class="petals-container"></div>
+
+    <!-- CONTEÚDO DO JOGO -->
+    <div class="game-wrapper">
+        <header>
+            <div class="header-top">
+                <h1>Heard u, next 🌙</h1>
+                <button id="help-btn" class="help-btn" title="Como jogar">❓</button>
+            </div>
+            <p id="subtitle-attempts">Adivinhe a música da Ariana em 6 tentativas</p>
+
+            <!-- Contador de Pontos -->
+            <div class="score-container">
+                Pontuação: <span id="score-display">0</span>
+            </div>
+
+            <!-- Seletor de Dificuldade -->
+            <div class="difficulty-selector">
+                <select id="difficulty">
+                    <option value="facil">Fácil</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="dificil">Difícil</option>
+                    <option value="maisDificil">Mais Difícil</option>
+                </select>
+            </div>
+        </header>
+
+        <main>
+            <div id="guesses-container"></div>
+
+            <!-- Player e Barra de Progresso -->
+            <div class="player-container">
+                <div class="progress-bar-bg">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                </div>
+                <div class="controls">
+                    <button id="play-btn">▶ Tocar</button>
+                </div>
+            </div>
+
+            <!-- Busca e Botões de Ação -->
+            <div class="search-container" id="search-container">
+                <div class="input-wrapper">
+                    <input type="text" id="search-input" placeholder="Qual é a música?" autocomplete="off">
+                    <div id="autocomplete-results" class="autocomplete-results"></div>
+                </div>
+                <button id="submit-btn">Enviar</button>
+                <button id="skip-btn">Pular</button>
+            </div>
+
+            <!-- Container para Card Final -->
+            <div id="result-card" class="result-card" style="display: none;"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
