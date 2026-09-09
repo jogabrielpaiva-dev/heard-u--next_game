@@ -300,7 +300,6 @@ function revelarResultado(ganhou) {
         
         <div class="action-buttons-container">
             <button id="play-again-btn" class="action-btn btn-play-again">${textoBotao}</button>
-            <button id="copy-btn" class="action-btn btn-copy">📋 Copiar Resultado</button>
         </div>
     `;
 
